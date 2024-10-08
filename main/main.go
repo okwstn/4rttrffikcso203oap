@@ -1,20 +1,19 @@
 package main
 
 import (
+	"log"
+
 	"github.com/songgao/packets/ethernet"
 	"github.com/songgao/water"
-	"log"
 )
 
 func main() {
-	ifce, err := water.New(water.Config{
+	config := water.Config{
 		DeviceType: water.TAP,
-		PlatformSpecificParams: water.PlatformSpecificParams{
-			ComponentID:   "root/tap0901",
-			InterfaceName: "Ethernet 3",
-			Network:       "192.168.1.10/24",
-		},
-	})
+	}
+	config.Name = "O_O"
+
+	ifce, err := water.New(config)
 	if err != nil {
 		log.Fatal(err)
 	}
